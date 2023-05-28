@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-content">
+        <h1>Welcome to the Parking App!</h1>
+        <p class="tagline">Find available parking spaces quickly and easily.</p>
+        <div class="button-container">
+            <a href="{{ url_for('core.admin') }}" class="button">Parking Area 1</a>
+            <a href="{{ url_for('core.admin') }}" class="button">Parking Area 2</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

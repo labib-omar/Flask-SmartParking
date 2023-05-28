@@ -1,0 +1,145 @@
+/* General Styles */
+
+
+/* General Styles */
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333; /* Update to a dark color */
+    background-color: #fff; /* Update to white */
+}
+
+/* Navigation Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Rest of the CSS styles remain the same */
+
+
+/* Rest of the CSS styles remain the same */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Styles */
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: #fff;
+    margin-left: 15px;
+}
+
+/* Content Styles */
+.content {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.content p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #3f51b5;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    text-decoration: none; /* Add this line to remove underline */
+}
+
+.button:hover {
+    background-color: #303f9f;
+    color:black;
+}
+
+.button:focus {
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.4);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+
+
+.button.home {
+    background-color: #3f51b5;
+    color: #fff;
+    font-weight: normal;
+    text-decoration: none;
+    border: none;
+  }
+  
+  .button.home:hover {
+    background-color: #303f9f;
+  }
+  
+
+/* Button Styles */
+.btn-primary {
+    background-color: #3f51b5;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3f51b5;
+    color: #fff;
+    opacity: 0.8;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Other Styles */
+
+/* Add any additional styles for other elements or pages here */
