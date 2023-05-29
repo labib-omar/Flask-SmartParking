@@ -3,10 +3,25 @@ from flask_login import login_required, current_user
 
 core_bp = Blueprint("core", __name__)
 
+import sys
+import os
+
+# Get the path to the directory containing main.py
+main_directory = os.path.abspath(os.path.dirname(__file__))
+main_directory = os.path.join(main_directory, '..', 'parking_detection')
+
+# Add the main_directory to the module search path
+sys.path.append(main_directory)
+
+
+from parking_detection import main
+
 
 @core_bp.route("/home")
 def home():
-    return render_template("core/home.html")
+    empty, img_enc = main.check_spaces()
+    return render_template("core/home.html", empty=empty, img_enc=img_enc)
+
 
 @core_bp.route("/dashboard")
 @login_required

@@ -9,6 +9,10 @@
             <a href="{{ url_for('core.admin') }}" class="button">Parking Area 1</a>
             <a href="{{ url_for('core.admin') }}" class="button">Parking Area 2</a>
         </div>
+        <div>
+            <p>Empty Spaces: {{ empty }}</p>
+            <img src="data:image/jpeg;base64,{{ img_enc }}" alt="Parking Spaces">
+        </div>
     </div>
 </div>
 {% endblock %}
