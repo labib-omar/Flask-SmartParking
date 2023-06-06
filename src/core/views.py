@@ -17,10 +17,20 @@ sys.path.append(main_directory)
 from parking_detection import main
 
 
-@core_bp.route("/home")
+@core_bp.route("/")
 def home():
     empty, img_enc = main.check_spaces()
     return render_template("core/home.html", empty=empty, img_enc=img_enc)
+
+
+@core_bp.route("/park1")
+def park1():
+    return render_template("core/park1.html")
+
+
+@core_bp.route("/park2")
+def park2():
+    return render_template("core/park2.html")
 
 
 @core_bp.route("/dashboard")
