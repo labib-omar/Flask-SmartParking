@@ -82,8 +82,8 @@ def check_spaces():
 
 # while True:
 
-def disp():
-    cv2.imshow("Image", img)
+#def disp():
+#    cv2.imshow("Image", img)
 
     # checkSpaces()
 
