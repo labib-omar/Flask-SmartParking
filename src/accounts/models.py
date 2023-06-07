@@ -20,24 +20,30 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f"<User email={self.email}>"
 
+from datetime import datetime
+from sqlalchemy import DateTime
+
 class Reservation(db.Model):
     __tablename__ = "reservations"
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     parking_area_id = db.Column(db.Integer, db.ForeignKey("parking_areas.id"), nullable=False)
-    reservation_date = db.Column(db.Date, nullable=False)
+    reservation_datetime = db.Column(DateTime, nullable=True, default=datetime.now)
+
 
     user = db.relationship("User", backref=db.backref("reservations", lazy=True))
     parking_area = db.relationship("ParkingArea", backref=db.backref("reservations", lazy=True))
 
-    def __init__(self, user_id, parking_area_id, reservation_date):
+    def __init__(self, user_id, parking_area_id, reservation_datetime):
         self.user_id = user_id
         self.parking_area_id = parking_area_id
-        self.reservation_date = reservation_date
+        self.reservation_datetime = reservation_datetime
+
 
     def __repr__(self):
-        return f"<Reservation user_id={self.user_id}, parking_area_id={self.parking_area_id}, reservation_date={self.reservation_date}>"
+        return f"<Reservation user_id={self.user_id}, parking_area_id={self.parking_area_id}, reservation_datetime={self.reservation_datetime}>"
+
 
 class ParkingArea(db.Model):
     __tablename__ = "parking_areas"

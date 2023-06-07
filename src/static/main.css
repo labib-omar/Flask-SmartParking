@@ -223,3 +223,25 @@ iframe {
     transform: scale(0.95);
 }
 
+.reservation-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .reservation-box {
+    width: 200px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .reservation-box p {
+    margin: 0;
+  }
+  
+  .reservation-box strong {
+    font-weight: bold;
+  }
+  
