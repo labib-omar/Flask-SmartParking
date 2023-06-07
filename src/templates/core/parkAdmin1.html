@@ -1,0 +1,19 @@
+<!-- Add the necessary HTML elements -->
+<p id="empty-value">{{ empty }}</p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  function getEmpty() {
+    $.get("/get_empty", function(data) {
+      $("#empty-value").text(data.value);
+      $('#frame').attr('src', 'data:image/jpeg;base64,' + data.img_enc);
+    });
+  }
+  
+  // Update the value and image every 1 second
+  setInterval(getEmpty, 100);
+</script>
+
+<img id="frame" src="" alt="Image">
+
+

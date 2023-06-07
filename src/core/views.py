@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, request, redirect, url_for
+from flask import Blueprint, render_template, flash, request, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 import sys
 import os
@@ -29,12 +29,43 @@ def update_parking_area_spaces(area_id):
     parking_area = ParkingArea.query.get(area_id)  # Retrieve the desired ParkingArea object
     free_spaces = main.check_spaces()  # Get the number of free spaces using checkspaces()
     reserved = 0
-    for reservation in parking_area.reservations:
+    for reservation in ParkingArea.query.get(area_id).reservations:
         if reservation.active:
             reserved = reserved + 1
     parking_area.free_spaces = free_spaces - reserved  # Update the number of free spaces
     db.session.commit()  # Save the changes to the database
 
+
+import threading
+
+# Global variable to hold the value
+empty = 0
+img_enc = ""
+
+# Flag variable to control the thread
+run_thread = False
+
+
+@core_bp.route("/get_empty", methods=["GET"])
+def get_empty():
+    global empty, img_enc
+    empty, img_enc = main.check_spaces()
+    return jsonify(value=empty, img_enc=img_enc)
+
+
+@core_bp.route("/parkAdmin1")
+@login_required
+def parkAdmin1():
+    global run_thread
+    if current_user.is_admin:
+
+        # Start the thread to update the empty value
+        update_thread = threading.Thread(target=get_empty)
+        update_thread.start()
+
+        return render_template("core/parkAdmin1.html")
+    run_thread = False
+    return render_template("errors/401.html")
 
 
 @core_bp.route("/park1")
@@ -93,14 +124,14 @@ def reserve_confirm(parking_area_id):
         return render_template("core/reserve_success.html", name = ParkingArea.query.get(parking_area_id).name)
 
 
-
-
-
-
 @core_bp.route("/dashboard")
 @login_required
 def dash():
+    global run_thread
+    run_thread = False
     user_reservations = Reservation.query.filter_by(user_id=current_user.id).all()
+    if current_user.is_admin:
+        user_reservations = Reservation.query.all()
     return render_template("core/dashboard.html", reservations=user_reservations)
 
 @core_bp.route("/cancel_reservation", methods=["POST"])
