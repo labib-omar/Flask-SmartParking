@@ -10,7 +10,11 @@
                 <div class="reservation-box">
                     <p><strong>Reservation ID:</strong> {{ reservation.id }}</p>
                     <p><strong>Parking Area:</strong> {{ reservation.parking_area.name }}</p>
-                    <p><strong>Reservation Date:</strong> {{ reservation.reservation_datetime }}</p>
+                    <p><strong>Reservation Date:</strong> {{ reservation.reservation_datetime.strftime("%d/%m/%Y %H:%M") }}</p>
+                    <p><strong>Active:</strong> {{ reservation.active }}</p>
+                    {% if reservation.active %}
+                    <button type="button" class="cancel-button" onclick="cancelReservation('{{ reservation.id }}')">Cancel</button>
+                    {% endif %}     
                 </div>
             {% endfor %}
         {% else %}

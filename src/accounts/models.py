@@ -30,6 +30,7 @@ class Reservation(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     parking_area_id = db.Column(db.Integer, db.ForeignKey("parking_areas.id"), nullable=False)
     reservation_datetime = db.Column(DateTime, nullable=True, default=datetime.now)
+    active = db.Column(db.Boolean, nullable=True, default=True)
 
 
     user = db.relationship("User", backref=db.backref("reservations", lazy=True))
@@ -39,6 +40,7 @@ class Reservation(db.Model):
         self.user_id = user_id
         self.parking_area_id = parking_area_id
         self.reservation_datetime = reservation_datetime
+        self.active = True
 
 
     def __repr__(self):
