@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="reservation-page">
+    <div class="reservation-content">
+        <h1>Reservation Confirmation</h1>
+        <p>Are you sure you want to reserve a parking spot at {{ name }}?</p>
+        <div class="button-container">
+            <a href="{{ url_for('core.dash') }}" class="reserve-button">Yes</a>
+            <a href="{{ url_for('core.dash') }}" class="reserve-button">No</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

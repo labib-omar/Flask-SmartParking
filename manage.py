@@ -4,7 +4,7 @@ import unittest
 from flask.cli import FlaskGroup
 
 from src import app, db
-from src.accounts.models import User
+from src.accounts.models import *
 
 cli = FlaskGroup(app)
 
@@ -36,6 +36,21 @@ def create_admin():
         print(f"Admin with email {email} created successfully!")
     except Exception:
         print("Couldn't create admin user.")
+
+
+@cli.command("create_parking_area")
+def create_parking_area():
+    """Creates a parking area."""
+    name = input("Enter parking area name: ")
+    capacity = int(input("Enter parking area capacity: "))
+    try:
+        parking_area = ParkingArea(name=name, capacity=capacity, free_spaces=capacity)
+        db.session.add(parking_area)
+        db.session.commit()
+        print(f"Parking area {name} created successfully!")
+    except Exception as e:
+        print(f"Couldn't create parking area. Error: {str(e)}")
+
 
 
 if __name__ == "__main__":

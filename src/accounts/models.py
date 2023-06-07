@@ -1,12 +1,8 @@
 from datetime import datetime
-
 from flask_login import UserMixin
-
 from src import bcrypt, db
 
-
 class User(UserMixin, db.Model):
-
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -22,4 +18,39 @@ class User(UserMixin, db.Model):
         self.is_admin = is_admin
 
     def __repr__(self):
-        return f"<email {self.email}>"
+        return f"<User email={self.email}>"
+
+class Reservation(db.Model):
+    __tablename__ = "reservations"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    parking_area_id = db.Column(db.Integer, db.ForeignKey("parking_areas.id"), nullable=False)
+    reservation_date = db.Column(db.Date, nullable=False)
+
+    user = db.relationship("User", backref=db.backref("reservations", lazy=True))
+    parking_area = db.relationship("ParkingArea", backref=db.backref("reservations", lazy=True))
+
+    def __init__(self, user_id, parking_area_id, reservation_date):
+        self.user_id = user_id
+        self.parking_area_id = parking_area_id
+        self.reservation_date = reservation_date
+
+    def __repr__(self):
+        return f"<Reservation user_id={self.user_id}, parking_area_id={self.parking_area_id}, reservation_date={self.reservation_date}>"
+
+class ParkingArea(db.Model):
+    __tablename__ = "parking_areas"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    capacity = db.Column(db.Integer, nullable=False, default=0)
+    free_spaces = db.Column(db.Integer, nullable=False, default=0)
+
+    def __init__(self, name, capacity, free_spaces=0):
+        self.name = name
+        self.capacity = capacity
+        self.free_spaces = free_spaces
+
+    def __repr__(self):
+        return f"<ParkingArea name={self.name}, capacity={self.capacity}, free_spaces={self.free_spaces}>"
