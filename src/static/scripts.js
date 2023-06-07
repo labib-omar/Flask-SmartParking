@@ -9,6 +9,7 @@ function cancelReservation(reservationId) {
         // Handle the success response
         console.log("Reservation cancelled successfully");
         // Optionally, you can update the UI to reflect the canceled reservation
+        location.reload();
       },
       error: function(error) {
         // Handle the error response

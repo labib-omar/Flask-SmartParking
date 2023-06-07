@@ -6,7 +6,7 @@
         <h1>Reservation Confirmation</h1>
         <p>Are you sure you want to reserve a parking spot at {{ name }}?</p>
         <div class="button-container">
-            <form method="POST" action="{{ url_for('core.reserve_confirm') }}">
+            <form method="POST" action="{{ url_for('core.reserve_confirm', parking_area_id=parking_area_id) }}">
                 <button type="submit" class="reserve-button">Yes</button>
                 <a href="{{ url_for('core.home') }}" class="reserve-button">No</a>
             </form>     

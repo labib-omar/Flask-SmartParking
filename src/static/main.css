@@ -245,3 +245,29 @@ iframe {
     font-weight: bold;
   }
   
+  /* CSS for cancel button */
+.cancel-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cancel-button:hover {
+    background-color: darkred;
+  }
+  
+  /* CSS for reservation boxes */
+  .reservation-box {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .reservation-box p {
+    margin: 0;
+  }
+  
