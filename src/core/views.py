@@ -20,10 +20,35 @@ sys.path.append(main_directory)
 from parking_detection import main
 
 
+@core_bp.route("/add_parking", methods=["GET", "POST"])
+@login_required
+def add_parking():
+    if current_user.is_admin:
+        if request.method == "POST":
+            name = request.form.get("name")
+            capacity = int(request.form.get("capacity"))
+            map_link = request.form.get("map_link")
+            detection_method = request.form.get("detection_method")
+            video_path = request.form.get("video_path")
+
+            # Process the form data and add the parking area to the database
+            parking_area = ParkingArea(name=name, capacity=capacity, map_link=map_link, detection_method=detection_method, video_path=video_path)
+            db.session.add(parking_area)
+            db.session.commit()
+
+            flash("Parking area added successfully", "success")
+            return redirect(url_for("core.dash"))
+
+        return render_template("core/addParking.html")
+
+    return render_template("errors/401.html")
+
+
+
 @core_bp.route("/")
 def home():
-    return render_template("core/home.html")
-
+    parking_areas = ParkingArea.query.all()
+    return render_template("core/home.html", parking_areas=parking_areas)
 
 def update_parking_area_spaces(area_id):
     parking_area = ParkingArea.query.get(area_id)  # Retrieve the desired ParkingArea object
@@ -53,9 +78,9 @@ def get_empty():
     return jsonify(value=empty, img_enc=img_enc)
 
 
-@core_bp.route("/parkAdmin1")
+@core_bp.route("/parkAdmin")
 @login_required
-def parkAdmin1():
+def parkAdmin():
     global run_thread
     if current_user.is_admin:
 
@@ -63,19 +88,27 @@ def parkAdmin1():
         update_thread = threading.Thread(target=get_empty)
         update_thread.start()
 
-        return render_template("core/parkAdmin1.html")
+        return render_template("core/parkAdmin.html")
     run_thread = False
     return render_template("errors/401.html")
 
 
-@core_bp.route("/park1")
+""" @core_bp.route("/park1")
 @login_required
 def park1():
     parking_area_id = 1
     update_parking_area_spaces(parking_area_id)
     return render_template("core/park1.html", name=ParkingArea.query.get(parking_area_id).name, available_spaces_park=ParkingArea.query.get(parking_area_id).free_spaces, parking_area_id=parking_area_id)
+ """
+@core_bp.route("/park<int:parking_area_id>")
+@login_required
+def park(parking_area_id):
+    parking_area = ParkingArea.query.get(parking_area_id)
+    update_parking_area_spaces(parking_area_id)
+    return render_template("core/park.html", parking_area=parking_area)
 
 
+""" 
 @core_bp.route("/park2")
 @login_required
 def park2():
@@ -83,7 +116,7 @@ def park2():
     update_parking_area_spaces(parking_area_id)
     return render_template("core/park2.html", name=ParkingArea.query.get(parking_area_id).name, available_spaces_park=ParkingArea.query.get(parking_area_id).free_spaces, parking_area_id=parking_area_id)
 
-
+ """
 @core_bp.route("/reserve")
 @login_required
 def reserve():

@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <h1>Add Parking Area</h1>
+    <form action="{{ url_for('core.add_parking') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="map_link">Map Link:</label>
+            <input type="text" id="map_link" name="map_link" required>
+        </div>
+        <div class="form-group">
+            <label for="available_spaces">Available Spaces:</label>
+            <input type="number" id="available_spaces" name="available_spaces" required>
+        </div>
+        <button type="submit">Add Parking Area</button>
+    </form>
+{% endblock %}
