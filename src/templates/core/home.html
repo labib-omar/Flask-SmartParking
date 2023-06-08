@@ -10,6 +10,6 @@
   </div>
   
   {% if current_user.is_admin %}
-    <a href="{{ url_for('core.parkAdmin') }}" class="admin-button">Admin Panel</a>
+    <a href="{{ url_for('core.add_parking') }}" class="admin-button">Admin Panel</a>
   {% endif %}
 {% endblock %}

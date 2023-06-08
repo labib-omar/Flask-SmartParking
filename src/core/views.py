@@ -61,7 +61,7 @@ def update_parking_area_spaces(area_id):
     db.session.commit()  # Save the changes to the database
 
 
-import threading
+""" import threading
 
 # Global variable to hold the value
 empty = 0
@@ -76,9 +76,9 @@ def get_empty():
     global empty, img_enc
     empty, img_enc = main.check_spaces()
     return jsonify(value=empty, img_enc=img_enc)
+ """
 
-
-@core_bp.route("/parkAdmin")
+""" @core_bp.route("/parkAdmin")
 @login_required
 def parkAdmin():
     global run_thread
@@ -91,7 +91,7 @@ def parkAdmin():
         return render_template("core/parkAdmin.html")
     run_thread = False
     return render_template("errors/401.html")
-
+ """
 
 """ @core_bp.route("/park1")
 @login_required
@@ -143,7 +143,7 @@ def reserve_confirm(parking_area_id):
 
         if has_previous_reservation:
             flash("You already have a reservation within the last hour.", "warning")
-            return redirect(url_for("core.park" + str(parking_area_id)))
+            return redirect(url_for("core.park", parking_area_id=parking_area_id))
 
         # Create a new reservation for the current user with the current date and time and the specified parking area
         reservation = Reservation(
@@ -185,10 +185,10 @@ def cancel_reservation():
         flash("Reservation not found", "danger")
         return "Reservation not found", 404
 
-@core_bp.route("/admin")
+""" @core_bp.route("/admin")
 @login_required
 def admin():
     if current_user.is_admin:
         return render_template("core/admin.html")
     else:
-        return render_template("errors/401.html")
+        return render_template("errors/401.html") """
