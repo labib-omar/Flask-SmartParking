@@ -1,14 +1,14 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<div class="reservation-page">
-    <div class="reservation-content">
+<div>
+    <div>
         <h1>Reservation Confirmation</h1>
         <p>Are you sure you want to reserve a parking spot at {{ name }}?</p>
-        <div class="button-container">
+        <div>
             <form method="POST" action="{{ url_for('core.reserve_confirm', parking_area_id=parking_area_id) }}">
-                <button type="submit" class="reserve-button">Yes</button>
-                <a href="{{ url_for('core.home') }}" class="reserve-button">No</a>
+                <button type="submit" class="btn btn-primary">Yes</button>
+                <a href="{{ url_for('core.home') }}" class="btn btn-secondary">No</a>
             </form>     
         </div>
     </div>

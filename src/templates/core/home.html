@@ -1,15 +1,17 @@
 {% extends "_base.html" %}
 
 {% block content %}
-  <h1>Welcome to the Parking Page</h1>
-  <h2>Parking Areas:</h2>
-  <div class="button-container">
-    {% for parking_area in parking_areas %}
-      <a href="{{ url_for('core.park', parking_area_id=parking_area.id) }}" class="parking-button">{{ parking_area.name }}</a>
-    {% endfor %}
-  </div>
+  <div>
+    <h1>Welcome to the Parking Page</h1>
+    <h2>Parking Areas:</h2>
+    <div>
+      {% for parking_area in parking_areas %}
+        <a href="{{ url_for('core.park', parking_area_id=parking_area.id) }}" class="btn btn-primary">{{ parking_area.name }}</a>
+      {% endfor %}
+    </div>
   
-  {% if current_user.is_admin %}
-    <a href="{{ url_for('core.add_parking') }}" class="admin-button">Admin Panel</a>
-  {% endif %}
+    {% if current_user.is_admin %}
+      <a href="{{ url_for('core.add_parking') }}" class="btn btn-success">Admin Panel</a>
+    {% endif %}
+  </div>
 {% endblock %}

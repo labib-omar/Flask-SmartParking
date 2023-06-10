@@ -13,7 +13,7 @@
                     <p><strong>Reservation Date:</strong> {{ reservation.reservation_datetime.strftime("%d/%m/%Y %H:%M") }}</p>
                     <p><strong>Active:</strong> {{ reservation.active }}</p>
                     {% if reservation.active %}
-                    <button type="button" class="cancel-button" onclick="cancelReservation('{{ reservation.id }}')">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="cancelReservation('{{ reservation.id }}')">Cancel</button>
                     {% endif %}     
                 </div>
             {% endfor %}

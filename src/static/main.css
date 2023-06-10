@@ -1,226 +1,112 @@
-/* General Styles */
+/** Navigation **/
 
-
-/* General Styles */
-/* General Styles */
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    color: #333; /* Update to a dark color */
-    background-color: #fff; /* Update to white */
+.home-btn {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Navigation Styles */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+.home-btn:hover {
+  background-color: #e9ecef;
 }
 
-/* Rest of the CSS styles remain the same */
-
-
-/* Rest of the CSS styles remain the same */
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation Styles */
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.navbar-nav {
-    margin-left: auto;
+.text-bg-dark {
+  background-color: #343a40;
+  color: #fff;
 }
 
 .nav-link {
-    color: #fff;
-    margin-left: 15px;
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Content Styles */
-.content {
-    padding: 80px 0;
-    text-align: center;
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    font-weight: bold;
+.btn {
+  margin-right: 10px;
 }
 
-.content p {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
+.btn-outline-light {
+  color: #fff;
+  border-color: #fff;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #343a40;
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 30px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: #3f51b5;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    text-decoration: none; /* Add this line to remove underline */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
-.button:hover {
-    background-color: #303f9f;
-    color:black;
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
-.button:focus {
-    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.4);
+.btn-success:hover,
+.btn-danger:hover {
+  opacity: 0.8;
 }
 
-.button:active {
-    transform: scale(0.95);
+/** AddParking **/
+
+.add-parking-container {
+  margin-top: 40px;
 }
 
-
-
-.button.home {
-    background-color: #3f51b5;
-    color: #fff;
-    font-weight: normal;
-    text-decoration: none;
-    border: none;
-  }
-  
-  .button.home:hover {
-    background-color: #303f9f;
-  }
-  
-
-/* Button Styles */
-.btn-primary {
-    background-color: #3f51b5;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
+.add-parking-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.btn-primary:hover {
-    background-color: #3f51b5;
-    color: #fff;
-    opacity: 0.8;
+.add-parking-form {
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
+.form-group {
+  margin-bottom: 20px;
 }
 
-p {
-    line-height: 1.6;
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
 }
 
-/* Other Styles */
-
-/* Add any additional styles for other elements or pages here */
-
-.parking-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-.parking-content {
-    text-align: center;
-    padding: 40px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 800px; /* Adjust the max-width as needed */
-    margin: 0 auto;
+input[type="radio"] {
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
-
-.parking-name {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.available-spaces {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.available-spaces.green {
-    color: green;
-}
-
-.map-container {
-    margin-top: 20px;
-    width: 80%;
-    flex-grow: 1;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-iframe {
-    width: 100%;
-    height: 400px;
-    border: 0;
-}
-
-.reserve-button {
-    display: inline-block;
-    padding: 10px 30px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: #3f51b5;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    text-decoration: none;
-}
-
-.reserve-button:hover {
-    background-color: #303f9f;
-}
-
-.reserve-button:focus {
-    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.4);
-}
-
-.reserve-button:active {
-    transform: scale(0.95);
+.radio-label {
+  margin-right: 15px;
 }
 
 .reservation-list {
@@ -228,7 +114,7 @@ iframe {
     flex-wrap: wrap;
     gap: 20px;
   }
-  
+
   .reservation-box {
     width: 200px;
     padding: 10px;
@@ -236,160 +122,35 @@ iframe {
     border: 1px solid #ddd;
     border-radius: 5px;
   }
-  
+
   .reservation-box p {
     margin: 0;
   }
-  
+
   .reservation-box strong {
     font-weight: bold;
   }
-  
-  /* CSS for cancel button */
-.cancel-button {
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cancel-button:hover {
-    background-color: darkred;
-  }
-  
-  /* CSS for reservation boxes */
-  .reservation-box {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .reservation-box p {
-    margin: 0;
-  }
-  
 
-  .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .parking-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4285f4;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  .parking-button:hover {
-    background-color: #3367d6;
-  }
-  
-  .admin-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  .admin-button:hover {
-    background-color: #d32f2f;
+  .reservation-box .btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
-  .add-parking-form {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  input[type="radio"] {
-    margin-right: 5px;
-  }
-  
-  .submit-button {
-    padding: 10px 20px;
-    background-color: #4285f4;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #3367d6;
-  }
-  
-  .radio-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .radio-group label {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .radio-group input[type="radio"] {
-    opacity: 0;
-    position: absolute;
-  }
-  
-  .radio-group .radio-label {
-    display: inline-block;
-    margin-left: 5px;
-  }
-  
-  .radio-group .radio-button {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #ccc;
-    border-radius: 50px;
-    position: relative;
-    transition: background-color 0.3s;
-  }
-  
-  .radio-group .radio-button:before {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 5px;
-   
-  }  
-    
+.container {
+  max-width: 100%;
+}
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.embed-responsive::before {
+  display: block;
+  content: "";
+}

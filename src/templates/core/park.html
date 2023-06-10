@@ -1,14 +1,14 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<div class="parking-page">
-  <div class="parking-content">
+<div class="container">
+  <div class="text-center">
     <h1>{{ parking_area.name }}</h1>
-    <p class="available-spaces{% if parking_area.free_spaces > 5 %} green{% endif %}">Available Spaces: {{ parking_area.free_spaces }}</p>
-    <div class="map-container">
+    <p class="{% if parking_area.free_spaces > 5 %}text-success{% endif %}">Available Spaces: {{ parking_area.free_spaces }}</p>
+    <div class="embed-responsive embed-responsive-16by9">
       {{ parking_area.map_link | safe}}
     </div>
-    <a href="{{ url_for('core.reserve', parking_area_id=parking_area.id) }}" class="reserve-button">Reserve</a>
+    <a href="{{ url_for('core.reserve', parking_area_id=parking_area.id) }}" class="btn btn-primary">Reserve</a>
   </div>
 </div>
 {% endblock %}
