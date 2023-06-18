@@ -30,6 +30,7 @@ class Reservation(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     parking_area_id = db.Column(db.Integer, db.ForeignKey("parking_areas.id"), nullable=False)
     reservation_datetime = db.Column(DateTime, nullable=True, default=datetime.now)
+    active = db.Column(db.Boolean, nullable=True, default=True)
 
 
     user = db.relationship("User", backref=db.backref("reservations", lazy=True))
@@ -39,6 +40,7 @@ class Reservation(db.Model):
         self.user_id = user_id
         self.parking_area_id = parking_area_id
         self.reservation_datetime = reservation_datetime
+        self.active = True
 
 
     def __repr__(self):
@@ -52,11 +54,17 @@ class ParkingArea(db.Model):
     name = db.Column(db.String, nullable=False)
     capacity = db.Column(db.Integer, nullable=False, default=0)
     free_spaces = db.Column(db.Integer, nullable=False, default=0)
+    map_link = db.Column(db.String)  # Add the map_link attribute
+    detection_method = db.Column(db.String)  # Add the detection_method attribute
+    video_path = db.Column(db.String)  # Add the video_path attribute
 
-    def __init__(self, name, capacity, free_spaces=0):
+    def __init__(self, name, capacity, free_spaces=0, map_link="", detection_method="", video_path=""):
         self.name = name
         self.capacity = capacity
         self.free_spaces = free_spaces
+        self.map_link = map_link
+        self.detection_method = detection_method
+        self.video_path = video_path
 
     def __repr__(self):
-        return f"<ParkingArea name={self.name}, capacity={self.capacity}, free_spaces={self.free_spaces}>"
+        return f"<ParkingArea name={self.name}, capacity={self.capacity}, free_spaces={self.free_spaces}, map_link={self.map_link}, detection_method={self.detection_method}, video_path={self.video_path}>"

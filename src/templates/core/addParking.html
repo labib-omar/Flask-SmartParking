@@ -1,0 +1,37 @@
+{% extends "_base.html" %}
+
+{% block content %}
+  <div class="add-parking-container">
+    <h2>Add Parking Area</h2>
+    <form method="POST" action="{{ url_for('core.add_parking') }}" class="add-parking-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" required class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="map_link">Map Link:</label>
+        <input type="text" id="map_link" name="map_link" required class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="detection_method">Detection Method:</label><br>
+        <input type="radio" id="opencv" name="detection_method" value="OpenCV" checked>
+        <label for="opencv" class="radio-label">OpenCV</label>
+        <input type="radio" id="yolov7" name="detection_method" class="radio-label" value="YoloV7">
+        <label for="yolov7" class="radio-label">YoloV7</label>
+      </div>
+    
+      <div class="form-group">
+        <label for="video_path">Video Path:</label>
+        <input type="text" id="video_path" name="video_path" required class="form-control">
+      </div>
+    
+      <input type="submit" class="btn btn-primary" value="Add">
+    </form>
+  </div>
+{% endblock %}

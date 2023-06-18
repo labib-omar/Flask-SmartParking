@@ -1,18 +1,17 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<div class="hero">
-    <div class="hero-content">
-        <h1>Welcome to the Parking App!</h1>
-        <p class="tagline">Find available parking spaces quickly and easily.</p>
-        <div class="button-container">
-            <a href="{{ url_for('core.park1') }}" class="button">Parking Area 1</a>
-            <a href="{{ url_for('core.park2') }}" class="button">Parking Area 2</a>
-        </div>
-<!--         <div>
-            <p>Empty Spaces: {{ empty }}</p>
-            <img src="data:image/jpeg;base64,{{ img_enc }}" alt="Parking Spaces">
-        </div> -->
+  <div>
+    <h1>Welcome to the Parking Page</h1>
+    <h2>Parking Areas:</h2>
+    <div>
+      {% for parking_area in parking_areas %}
+        <a href="{{ url_for('core.park', parking_area_id=parking_area.id) }}" class="btn btn-primary">{{ parking_area.name }}</a>
+      {% endfor %}
     </div>
-</div>
+  
+    {% if current_user.is_admin %}
+      <a href="{{ url_for('core.add_parking') }}" class="btn btn-success">Admin Panel</a>
+    {% endif %}
+  </div>
 {% endblock %}
