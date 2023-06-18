@@ -1,6 +1,21 @@
 {% extends "_base.html" %}
+
 {% block content %}
-
-<h1 class="text-center">Welcome {{current_user.email}} {{current_user.is_admin}}!</h1>
-
+<div class="dashboard">
+    <h1>Dashboard</h1>
+    <h2>Your Reservations</h2>
+    <div class="reservation-list">
+        {% if reservations %}
+            {% for reservation in reservations %}
+                <div class="reservation-box">
+                    <p><strong>Reservation ID:</strong> {{ reservation.id }}</p>
+                    <p><strong>Parking Area:</strong> {{ reservation.parking_area.name }}</p>
+                    <p><strong>Reservation Date:</strong> {{ reservation.reservation_datetime }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No reservations found.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

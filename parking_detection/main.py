@@ -75,15 +75,15 @@ def check_spaces():
     # your existing code to process the frame
     ret, buffer = cv2.imencode('.jpg', img)
     frame_str = base64.b64encode(buffer).decode()
-    return [spaces, frame_str]
+    #return [spaces, frame_str]
 
-    # return spaces
+    return spaces
 
 
 # while True:
 
-def disp():
-    cv2.imshow("Image", img)
+#def disp():
+#    cv2.imshow("Image", img)
 
     # checkSpaces()
 

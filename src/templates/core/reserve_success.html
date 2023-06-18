@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+
+{% block content %}
+  <div class="content">
+    <h1>Reservation Successful!</h1>
+    <p>Your parking spot has been reserved.</p>
+    <p>Thank you for choosing {{ name }}.</p>
+    <a class="button home" href="{{ url_for('core.home') }}">Go Back to Home</a>
+  </div>
+{% endblock %}
